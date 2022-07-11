@@ -1,7 +1,6 @@
-//
+// Swift V5.1
 //  ViewController.swift
 //  EggTimer App
-
 
 import UIKit
 
@@ -23,3 +22,4 @@ class ViewController: UIViewController {
     }
     
 }
+
