@@ -23,6 +23,3 @@ class ViewController: UIViewController {
     
 }
 
-
-
-//Test commit
