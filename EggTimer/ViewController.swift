@@ -5,22 +5,28 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let eggTimes = ["Soft": 5, "Medium": 7, "Hard": 12]
+    let eggTimes = ["Soft": 5, "Medium": 7, "Hard": 12] //5m 7m 12m - converted to seconds
     
-    var secondsRemaining = 60
     //User selects hardness and prints the time relative to each eggs hardness
     @IBAction func hardnessSelected(_ sender: UIButton) {
+
+        let hardness = sender.currentTitle //Gets label
         
-        print("Button Pressed")
+        let result = eggTimes[hardness!]! //Gets value from label
         
+        var timeLeft = result * 60
+      
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-            if self.secondsRemaining > 0 {
-                print ("\(self.secondsRemaining) seconds")
-                self.secondsRemaining -= 1
+            if timeLeft > 0 {
+                print ("\(timeLeft) seconds")
+                timeLeft -= 1
             } else {
                 Timer.invalidate()
             }
         }
+    }
+    
+}
         
 //        let hardness = sender.currentTitle
 //
@@ -31,9 +37,7 @@ class ViewController: UIViewController {
 //            print(result)
 //        }
         
-    }
     
-}
 
 //class ViewController: UIViewController {
 //
