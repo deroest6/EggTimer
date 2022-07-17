@@ -5,54 +5,38 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let eggTimes = ["Soft": 5, "Medium": 7, "Hard": 12] //5m 7m 12m - converted to seconds
+    let eggTimes = ["Soft": 3, "Medium": 5, "Hard": 7]
     
-    //User selects hardness and prints the time relative to each eggs hardness
+    var timer = Timer()
+    var buttonPressed = false
+    
+//    if buttonPressed == false {
+//        titleLabel.text = "Do you like green eggs and ham?"
+//    } else {
+//        titileLabel.text = ""
+//    }
+    
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    //A click selects hardness and prints the time relative to each egg selection timer
     @IBAction func hardnessSelected(_ sender: UIButton) {
-
+        
+        timer.invalidate()
+        self.titleLabel.text = "Do you like Green Eggs and Ham?"
+        
         let hardness = sender.currentTitle //Gets label
-        
         let result = eggTimes[hardness!]! //Gets value from label
-        
-        var timeLeft = result * 60
+        var timeLeft = result * 1 //Egg times converted to seconds
       
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
             if timeLeft > 0 {
                 print ("\(timeLeft) seconds")
                 timeLeft -= 1
             } else {
-                Timer.invalidate()
+                self.timer.invalidate()
+                self.titleLabel.text = "Done"
             }
         }
     }
     
 }
-        
-//        let hardness = sender.currentTitle
-//
-//        if eggTimes[hardness!] != nil {
-//
-//            let result = eggTimes[hardness!]!
-//
-//            print(result)
-//        }
-        
-    
-
-//class ViewController: UIViewController {
-//
-//var secondsRemaining = 30
-//
-//@IBAction func startTimer(_ sender: UIButton) {
-//
-//    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-//        if self.secondsRemaining > 0 {
-//            print ("\(self.secondsRemaining) seconds")
-//            self.secondsRemaining -= 1
-//        } else {
-//            Timer.invalidate()
-//        }
-//    }
-//
-// }
-//}
